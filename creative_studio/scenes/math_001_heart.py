@@ -13,24 +13,33 @@ config.frame_rate = 30
 config.background_color = "#080B14"
 
 PINK = "#FF5278"
-RED = "#C5214C"
+RED = "#E52239"
 
-def heart_points(n=1601):
+def heart_points(n=2401):
     """Solve r² - |cos θ|^(2/3) sin θ r^(5/3) - 1 = 0."""
     theta = np.linspace(-np.pi/2, 3*np.pi/2, n)
-    k = np.abs(np.cos(theta))**(2/3)*np.sin(theta)
-    lo, hi = np.full(n, .5), np.full(n, 2.5)
-    for _ in range(55):
+    def solve(angles):
+        k = np.abs(np.cos(angles))**(2/3)*np.sin(angles)
+        lo, hi = np.full_like(angles,.5), np.full_like(angles,2.5)
+        for _ in range(55):
+            r = (lo+hi)/2
+            f = r*r-k*r**(5/3)-1
+            lo = np.where(f <= 0, r, lo)
+            hi = np.where(f > 0, r, hi)
         r = (lo+hi)/2
-        f = r*r-k*r**(5/3)-1
-        lo = np.where(f <= 0, r, lo)
-        hi = np.where(f > 0, r, hi)
-    r = (lo+hi)/2
-    points = np.column_stack((r*np.cos(theta),r*np.sin(theta)))
+        return np.column_stack((r*np.cos(angles),r*np.sin(angles)))
+    points = solve(theta)
     # Resample to give the moving point a constant speed along the curve.
     s = np.r_[0, np.cumsum(np.linalg.norm(np.diff(points,axis=0),axis=1))]
     q = np.linspace(0,s[-1],n)
-    return np.column_stack([np.interp(q,s,points[:,i]) for i in range(2)])
+    # Re-solve after angular interpolation to keep each sampled vertex on F=0.
+    points = solve(np.interp(q,s,theta))
+    x,y = points.T
+    residual = float(np.max(np.abs((x*x+y*y-1)**3-x*x*y**3)))
+    print(f"MATH-001: {n} boundary samples; max |F(x,y)| = {residual:.3e}")
+    assert residual < 1e-10, "Heart equation validation failed"
+    assert np.linalg.norm(points[0]-points[-1]) < 1e-10, "Curve is not closed"
+    return points
 
 class MathematicalHeart(Scene):
     def construct(self):
@@ -57,15 +66,28 @@ class MathematicalHeart(Scene):
                 result.add(segment)
             return result
         trace = always_redraw(partial_trace)
+        origin = plane.c2p(0,0)
+        def partial_fill():
+            progress = track.get_value()
+            if progress <= 0:
+                return VMobject().set_points_as_corners([origin,origin,origin]).set_fill(RED,0).set_stroke(width=0)
+            tip = curve.point_from_proportion(progress)
+            idx = min(len(pts)-1,int(progress*(len(pts)-1)))
+            # Radial sweep: every traced boundary segment fills inward to the origin.
+            vertices = np.vstack([origin,pts[:idx+1],tip,origin])
+            return VMobject().set_points_as_corners(vertices).set_fill(RED,.86).set_stroke(width=0)
+        fill = always_redraw(partial_fill)
         lead.add_updater(lambda d:d.move_to(curve.point_from_proportion(track.get_value())))
         caption=Text("A mathematical way to say",font="Liberation Serif",font_size=32,color="#B9C0D0").move_to(DOWN*4.35)
         love=Text("I love you.",font="Liberation Serif",font_size=68,color="#FF829C").move_to(DOWN*5.15)
         signature = Text("Soph Laugh", font="Liberation Serif", font_size=22, color="#B7A7B8").move_to(RIGHT*3.15+DOWN*6.15)
-        signature.align_to(RIGHT*3.35, RIGHT)
+        signature.to_corner(DR,buff=.65)
         self.add(signature)
-        self.add(kicker,title,equation,plane,xlab,ylab,trace,lead)
+        self.add(kicker,title,equation,plane,xlab,ylab,fill,trace,lead)
         self.play(track.animate.set_value(1),rate_func=linear,run_time=10)
         lead.clear_updaters()
+        fill.clear_updaters()
+        fill.become(VMobject().set_points_as_corners(pts).set_fill(RED,.86).set_stroke(width=0))
         self.remove(trace,lead)
         self.add(layers)
         self.play(FadeIn(caption),run_time=.65)
