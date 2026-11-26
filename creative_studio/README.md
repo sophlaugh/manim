@@ -8,7 +8,7 @@ Use the exact text **Soph Laugh** in small, legible letters in the lower-right s
 
 ## MATH-001 — The mathematics of love
 
-A continuous luminous trace of the implicit equation, followed by two gentle brightness pulses. The curve remains an outline throughout. Portrait master: 1080 × 1920, 30 fps.
+A continuous luminous trace of the implicit equation, starting at the first frame and tracing for ten seconds. The final four seconds display the completed outline and caption. The curve remains an outline throughout. Portrait master: 1080 × 1920, 30 fps.
 
 From the repository root, render with Manim Community Edition and a working LaTeX installation:
 
