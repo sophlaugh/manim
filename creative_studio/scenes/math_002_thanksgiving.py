@@ -47,7 +47,7 @@ class ThanksgivingLeaf(Scene):
         available = set(manimpango.list_fonts())
         serif = next((f for f in ("Times New Roman","Liberation Serif","Serif") if f in available),"serif")
         kicker = Text("M A T H E M A T I C S   /   0 0 2",font_size=23,color="#A8B1C2").move_to(UP*5.42)
-        title = Text("The geometry of autumn",font=serif,font_size=43,color="#FFF0DA").move_to(UP*4.62)
+        title = Text("Happy Thanksgiving!",font=serif,font_size=43,color="#FFF0DA").move_to(UP*4.62)
         equation = MathTex(r"\mathbf{p}_i=r_i(\cos\theta_i,\sin\theta_i)",font_size=35,color="#F2BC8A").move_to(UP*3.83)
         plane = NumberPlane(x_range=[-3,3,1],y_range=[-3,3,1],
             x_length=6.7,y_length=6.7,faded_line_ratio=0,
@@ -93,9 +93,10 @@ class ThanksgivingLeaf(Scene):
             veins.add(Line(O,O+(p-O)*.86,stroke_color="#8C321B",stroke_width=2.2,stroke_opacity=.55))
         mid = Line(pts[0],plane.c2p(0,2.42),stroke_color="#A73A17",stroke_width=3,stroke_opacity=.65)
         signature = Text("Soph Laugh",font=serif,font_size=22,color="#C8B5A6").to_corner(DR,buff=.65)
-        caption = Text("Happy Thanksgiving!",font=serif,font_size=55,color="#FFD087").move_to(DOWN*4.65)
+        caption = Text("Wishing you a beautiful day of gratitude,",font=serif,font_size=32,color="#FFD087").move_to(DOWN*4.65)
         caption.scale_to_fit_width(min(caption.width,7.0))
-        sub = Text("Wishing you a beautiful autumn day.",font=serif,font_size=27,color="#F2DEC6").move_to(DOWN*5.35)
+        sub = Text("good food, and better company!",font=serif,font_size=32,color="#FFD087").move_to(DOWN*5.35)
+        sub.scale_to_fit_width(min(sub.width,7.0))
         self.add(kicker,title,equation,plane,signature,fill,trace,lead)
         self.play(Create(stem),run_time=.65)
         self.play(progress.animate.set_value(1),rate_func=linear,run_time=9.35)
