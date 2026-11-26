@@ -43,8 +43,7 @@ def curve(start, *segments, fill=None, width=3, color=INK):
     path.set_stroke(color, width=width)
     return path
 
-LETTER_PATHS = [[(330, 1199), (335, 1203), (337, 1210)], [(588, 1100), (570, 1101), (569, 1102), (537, 1103), (497, 1108), (460, 1110), (436, 1112), (435, 1113), (421, 1113), (407, 1115), (334, 1118)], [(337, 1210), (336, 1213), (337, 1215), (339, 1215)], [(337, 1210), (339, 1212), (339, 1215)], [(339, 1215), (339, 1243), (341, 1255), (349, 1274), (354, 1280), (354, 1282), (365, 1293), (375, 1301), (396, 1312), (414, 1318), (430, 1320), (444, 1320), (461, 1317), (501, 1302), (511, 1303), (525, 1307), (528, 1309)], [(446, 1198), (426, 1213), (420, 1219), (415, 1228), (415, 1232), (418, 1235), (421, 1237), (427, 1238), (435, 1237), (444, 1232), (450, 1226), (454, 1219), (454, 1209), (449, 1198)], [(472, 1158), (461, 1156), (444, 1158), (435, 1163), (429, 1170), (428, 1174), (430, 1178), (435, 1185), (446, 1196), (446, 1198)], [(446, 1198), (449, 1198)], [(473, 1184), (471, 1184), (457, 1192), (449, 1198)], [(476, 1177), (473, 1184)], [(473, 1184), (474, 1188), (478, 1192), (484, 1194), (498, 1192), (502, 1189), (506, 1188)], [(476, 1175), (476, 1173), (482, 1167), (486, 1167), (484, 1173), (480, 1177), (478, 1177)], [(476, 1175), (476, 1177)], [(476, 1175), (478, 1177)], [(476, 1177), (478, 1177)], [(506, 1185), (509, 1184), (514, 1178), (514, 1172), (510, 1172), (506, 1176), (505, 1178), (506, 1185)], [(506, 1185), (506, 1188)], [(506, 1188), (513, 1192), (527, 1192), (536, 1190)], [(528, 1310), (527, 1311), (529, 1312), (529, 1310)], [(529, 1309), (533, 1309), (543, 1314)], [(543, 1314), (544, 1316)], [(543, 1314), (545, 1314)], [(545, 1314), (544, 1316)], [(627, 1312), (617, 1315), (591, 1319), (567, 1318), (551, 1315), (548, 1313), (545, 1314)], [(588, 1100), (588, 1106), (579, 1145), (568, 1206), (567, 1230), (570, 1238), (574, 1238), (586, 1222), (606, 1180), (625, 1133), (631, 1121), (634, 1120)], [(597, 1058), (589, 1100)], [(819, 1098), (689, 1097), (688, 1098), (640, 1098), (639, 1099), (589, 1100)], [(634, 1120), (635, 1122), (635, 1136), (627, 1176), (626, 1190), (630, 1190), (641, 1183), (645, 1183), (659, 1191), (667, 1191), (679, 1182)], [(633, 1295), (633, 1299), (627, 1312)], [(627, 1312), (631, 1315), (634, 1319), (637, 1327), (639, 1328), (640, 1338)], [(635, 1117), (634, 1120)], [(679, 1178), (677, 1178), (674, 1173), (674, 1165), (676, 1160), (678, 1159), (682, 1160), (683, 1162), (683, 1170), (682, 1174), (679, 1178)], [(679, 1178), (679, 1182)], [(679, 1182), (689, 1188), (698, 1190)], [(749, 1210), (747, 1210), (741, 1218), (728, 1243), (719, 1271), (714, 1301), (714, 1319), (716, 1326), (719, 1329), (721, 1329), (727, 1325), (735, 1309), (738, 1300), (743, 1275), (743, 1267), (746, 1251), (749, 1216), (750, 1215), (749, 1210)], [(754, 1168), (746, 1170), (737, 1178), (736, 1182), (742, 1183), (746, 1180), (752, 1178), (753, 1180), (752, 1192), (753, 1196)], [(753, 1196), (749, 1210)], [(774, 1176), (770, 1177), (759, 1192), (753, 1196)], [(781, 1168), (782, 1187), (781, 1191), (777, 1194), (775, 1194), (774, 1192), (774, 1176)], [(781, 1168), (776, 1170), (774, 1173), (774, 1176)], [(781, 1168), (798, 1171), (800, 1172), (801, 1176)], [(801, 1176), (798, 1191), (800, 1197), (804, 1197), (808, 1192), (808, 1182), (804, 1177), (801, 1176)], [(873, 1322), (823, 1327), (815, 1333), (808, 1336)], [(836, 1174), (830, 1172), (823, 1176), (819, 1182), (817, 1188), (818, 1190), (820, 1192), (822, 1192), (826, 1189), (836, 1175)], [(866, 1106), (863, 1111), (851, 1145), (837, 1174)], [(837, 1175), (840, 1176)], [(869, 1107), (869, 1115), (866, 1129), (859, 1191), (859, 1205), (858, 1207), (859, 1242)], [(868, 1103), (866, 1104), (866, 1106)], [(866, 1106), (869, 1107)], [(871, 1090), (868, 1103)], [(868, 1103), (870, 1104), (869, 1107)]]
-SIGNATURE_PATHS = [[(847, 965), (850, 961), (850, 957), (844, 957), (842, 959), (844, 963), (847, 965)], [(847, 965), (845, 971)], [(855, 994), (854, 990), (852, 990), (850, 992), (850, 994), (855, 994)], [(861, 969), (857, 972), (858, 978), (853, 980)], [(855, 994), (856, 997)], [(861, 989), (864, 994), (866, 994), (868, 990)], [(866, 971), (867, 975), (869, 977), (873, 977)], [(873, 972), (873, 977)], [(873, 977), (873, 983)], [(874, 990), (873, 998), (875, 999), (878, 997)], [(881, 970), (880, 972), (881, 975)], [(886, 974), (881, 975)], [(881, 975), (881, 980)], [(881, 993), (882, 996)], [(882, 996), (882, 1001)], [(882, 996), (888, 996)], [(885, 969), (886, 974)], [(886, 974), (886, 980)], [(887, 988), (888, 996)], [(888, 996), (888, 1003)], [(896, 953), (902, 969), (905, 972), (910, 973)], [(905, 997), (907, 997), (908, 995), (907, 991), (904, 989), (900, 989), (897, 992), (896, 996), (899, 999), (903, 1000)], [(903, 1000), (902, 1003), (897, 1005)], [(902, 995), (904, 995), (905, 997)], [(905, 997), (905, 999), (903, 1000)]]
+LETTER_PATHS = [[[588,1100],[570,1101],[569,1102],[537,1103],[497,1108],[460,1110],[436,1112],[435,1113],[421,1113],[407,1115],[334,1118]],[[446,1198],[426,1213],[420,1219],[415,1228],[415,1232],[418,1235],[421,1237],[427,1238],[435,1237],[444,1232],[450,1226],[454,1219],[454,1209],[449,1198]],[[472,1158],[461,1156],[444,1158],[435,1163],[429,1170],[428,1174],[430,1178],[435,1185],[446,1196],[446,1198]],[[446,1198],[449,1198]],[[473,1184],[471,1184],[457,1192],[449,1198]],[[476,1177],[473,1184]],[[473,1184],[474,1188],[478,1192],[484,1194],[498,1192],[502,1189],[506,1188]],[[476,1175],[476,1173],[482,1167],[486,1167],[484,1173],[480,1177],[478,1177]],[[476,1175],[476,1177]],[[476,1175],[478,1177]],[[476,1177],[478,1177]],[[506,1185],[509,1184],[514,1178],[514,1172],[510,1172],[506,1176],[505,1178],[506,1185]],[[506,1185],[506,1188]],[[506,1188],[513,1192],[527,1192],[536,1190]],[[588,1100],[588,1106],[579,1145],[568,1206],[567,1230],[570,1238],[574,1238],[586,1222],[606,1180],[625,1133],[631,1121],[634,1120]],[[597,1058],[589,1100]],[[819,1098],[689,1097],[688,1098],[640,1098],[639,1099],[589,1100]],[[634,1120],[635,1122],[635,1136],[627,1176],[626,1190],[630,1190],[641,1183],[645,1183],[659,1191],[667,1191],[679,1182]],[[635,1117],[634,1120]],[[679,1178],[677,1178],[674,1173],[674,1165],[676,1160],[678,1159],[682,1160],[683,1162],[683,1170],[682,1174],[679,1178]],[[679,1178],[679,1182]],[[679,1182],[689,1188],[698,1190]],[[749,1210],[747,1210],[741,1218],[728,1243],[719,1271],[714,1301],[714,1319],[716,1326],[719,1329],[721,1329],[727,1325],[735,1309],[738,1300],[743,1275],[743,1267],[746,1251],[749,1216],[750,1215],[749,1210]],[[754,1168],[746,1170],[737,1178],[736,1182],[742,1183],[746,1180],[752,1178],[753,1180],[752,1192],[753,1196]],[[753,1196],[749,1210]],[[774,1176],[770,1177],[759,1192],[753,1196]],[[781,1168],[782,1187],[781,1191],[777,1194],[775,1194],[774,1192],[774,1176]],[[781,1168],[776,1170],[774,1173],[774,1176]],[[781,1168],[798,1171],[800,1172],[801,1176]],[[801,1176],[798,1191],[800,1197],[804,1197],[808,1192],[808,1182],[804,1177],[801,1176]],[[836,1174],[830,1172],[823,1176],[819,1182],[817,1188],[818,1190],[820,1192],[822,1192],[826,1189],[836,1175]],[[866,1106],[863,1111],[851,1145],[837,1174]],[[837,1175],[840,1176]],[[869,1107],[869,1115],[866,1129],[859,1191],[859,1205],[858,1207],[859,1242]],[[868,1103],[866,1104],[866,1106]],[[866,1106],[869,1107]],[[871,1090],[868,1103]],[[868,1103],[870,1104],[869,1107]]]
 
 
 def traced_ink(paths, width):
@@ -56,8 +55,69 @@ def traced_ink(paths, width):
 
 
 class SeeTheGood(Scene):
+    def setup_coordinates(self):
+        # Every unit is one genuine Manim coordinate unit; pt() maps
+        # reference pixels to this Cartesian plane with equal x/y scales.
+        grid_color = "#9AABBA"
+        grid = VGroup()
+        for x in range(-4, 5):
+            grid.add(Line([x,-7,0],[x,7,0],color=grid_color,
+                          stroke_width=1.9 if x == 0 else .8,
+                          stroke_opacity=.58 if x == 0 else .28))
+        for y in range(-7, 8):
+            grid.add(Line([-4,y,0],[4,y,0],color=grid_color,
+                          stroke_width=1.9 if y == 0 else .8,
+                          stroke_opacity=.58 if y == 0 else .28))
+        labels = VGroup()
+        for x in range(-4,5):
+            labels.add(Text(str(x),font="Times New Roman",font_size=18,
+                            color="#C8D4DF").move_to([x,-7.27,0]))
+        for y in range(-7,8):
+            labels.add(Text(str(y),font="Times New Roman",font_size=18,
+                            color="#C8D4DF").move_to([-4.25,y,0]))
+        labels.add(Text("x",font="Times New Roman",font_size=22,
+                        color="#C8D4DF").move_to([4.25,-7.27,0]))
+        labels.add(Text("y",font="Times New Roman",font_size=22,
+                        color="#C8D4DF").move_to([-4.25,7.3,0]))
+        heading = Text("Bezier coordinates",font="Times New Roman",
+                       font_size=28,color="#E4ECF3").move_to([0,7.6,0])
+        self.coordinate_grid = VGroup(grid,labels,heading).set_z_index(10)
+        self.active_path = None
+        self.pen = Dot(pt((621,108)),radius=.055,color="#FFCE72")
+        self.pen.set_stroke("#10151D",width=1.5).set_z_index(12)
+        def follow_pen(dot):
+            if self.active_path is not None and self.active_path.has_points():
+                dot.move_to(self.active_path.get_end())
+        self.pen.add_updater(follow_pen)
+        x_num = DecimalNumber(0,num_decimal_places=2,include_sign=True,
+                              font_size=27,color="#FFCE72")
+        y_num = DecimalNumber(0,num_decimal_places=2,include_sign=True,
+                              font_size=27,color="#FFCE72")
+        x_label = Text("x =",font="Times New Roman",font_size=25,color="#E4ECF3")
+        y_label = Text("y =",font="Times New Roman",font_size=25,color="#E4ECF3")
+        x_label.move_to([-1.55,7.12,0])
+        y_label.move_to([.65,7.12,0])
+        x_num.next_to(x_label,RIGHT,buff=.13)
+        y_num.next_to(y_label,RIGHT,buff=.13)
+        def update_number(number,axis,label):
+            number.set_value(float(self.pen.get_center()[axis]))
+            number.next_to(label,RIGHT,buff=.13)
+        x_num.add_updater(lambda m: update_number(m,0,x_label))
+        y_num.add_updater(lambda m: update_number(m,1,y_label))
+        self.coordinate_readout = VGroup(x_label,x_num,y_label,y_num).set_z_index(11)
+        self.play(FadeIn(self.coordinate_grid),run_time=.8)
+        self.add(self.pen,self.coordinate_readout)
+
+    def hide_coordinates(self):
+        self.pen.clear_updaters()
+        for m in self.coordinate_readout:
+            m.clear_updaters()
+        self.play(FadeOut(self.coordinate_grid),FadeOut(self.pen),
+                  FadeOut(self.coordinate_readout),run_time=1.0)
+
     def draw_fill(self, shape, seconds=1.3):
         # Trace the boundary first, then flood the closed region with color.
+        self.active_path = shape
         color = shape.get_fill_color()
         shape.set_fill(opacity=0)
         self.play(Create(shape), run_time=seconds, rate_func=linear)
@@ -65,6 +125,7 @@ class SeeTheGood(Scene):
 
     def construct(self):
         self.camera.background_color = "#10151D"
+        self.setup_coordinates()
         border = curve((621,108),
             (690,106,709,141,744,166),
             (815,198,861,225,900,259),
@@ -113,6 +174,7 @@ class SeeTheGood(Scene):
             (889,912,896,872,906,847),width=2.6)
         neck = curve((601,360),(611,389,606,416,599,438),width=2.4)
         spine = curve((600,766),(597,793,600,819,600,839),width=2.6)
+        self.active_path = left_arm
         self.play(Create(left_arm),Create(right_arm),Create(neck),Create(spine),
                   run_time=2.1,rate_func=linear)
 
@@ -171,6 +233,7 @@ class SeeTheGood(Scene):
         self.draw_fill(wrapper,.65)
         ribs = VGroup(*[curve((x,372),(b,401+(b-353)*.13),width=1.1)
                        for x,b in zip(range(348,421,9),range(357,410,7))])
+        self.active_path = ribs[-1]
         self.play(LaggedStart(*[Create(r) for r in ribs],lag_ratio=.13),run_time=.65)
         frosting = curve((344,371),
             (333,362,347,345,355,344),
@@ -185,6 +248,7 @@ class SeeTheGood(Scene):
             curve((355,340),(348,349,367,361,391,357),(402,356,411,350,414,348),width=1.4),
             curve((371,331),(362,344,385,352,401,344),width=1.4),
             curve((382,324),(376,333,390,342,399,337),width=1.2))
+        self.active_path = swirls[-1]
         self.play(LaggedStart(*[Create(p) for p in swirls],lag_ratio=.2),run_time=.95)
         candle = curve((381,329),(383,290),(389,290),(388,329),(381,329),
                        fill="#F9D6D9",width=1.35)
@@ -197,12 +261,42 @@ class SeeTheGood(Scene):
                       fill="#F2E900",width=1.5)
         self.draw_fill(flame,.7)
 
-        original_signature=traced_ink(SIGNATURE_PATHS,1.15)
-        lettering=traced_ink(LETTER_PATHS,2.15)
-        self.play(LaggedStart(*[Create(p) for p in original_signature],lag_ratio=.05),
-                  run_time=1.0)
-        self.play(LaggedStart(*[Create(p) for p in lettering],lag_ratio=.10),
-                  run_time=4.8)
+        # Replace the indistinct photo-traced mark with a legible two-line
+        # signature, in the same small white space beside the figure.
+        signature_heart = curve((847,959),
+            (842,951,836,957,841,963),
+            (843,966,845,969,847,972),
+            (850,968,854,963,854,960),
+            (854,953,849,953,847,959),width=1.55)
+        soph = Text("soph",font="Times New Roman",slant=ITALIC,color=INK)
+        soph.scale_to_fit_height(.155).move_to(pt((877,971)))
+        if soph.width > .40:
+            soph.scale_to_fit_width(.40)
+        laugh = Text("laugh",font="Times New Roman",slant=ITALIC,color=INK)
+        laugh.scale_to_fit_height(.19).move_to(pt((865,994)))
+        if laugh.width > .46:
+            laugh.scale_to_fit_width(.46)
+        signature_swirl = curve((891,999),
+            (896,1005,906,1005,908,998),
+            (911,990,901,985,898,992),
+            (895,997,903,1000,904,994),width=1.55)
+        self.active_path = signature_heart
+        self.play(Create(signature_heart),run_time=.3)
+        # Text is vector glyph geometry; Write draws the glyph contours.
+        self.play(Write(soph),Write(laugh),run_time=.8)
+        self.active_path = signature_swirl
+        self.play(Create(signature_swirl),run_time=.35)
+
+        # Keep the genuine handwriting but remove the die-cut border
+        # fragments that were captured in the original crop.
+        lettering=traced_ink(LETTER_PATHS,3.4)
+        # Track each actual stroke as it is drawn; no artificial coordinates.
+        for stroke in lettering:
+            self.active_path = stroke
+            self.play(Create(stroke),rate_func=linear,
+                      run_time=max(.09,4.9*stroke.get_arc_length()/
+                                   sum(p.get_arc_length() for p in lettering)))
+        self.hide_coordinates()
         credit = Text("Soph Laugh",font_size=18,color="#B7C0CC").to_corner(DR,buff=.25)
         self.play(FadeIn(credit),run_time=.5)
         self.wait(3)
