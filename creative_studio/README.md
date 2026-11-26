@@ -15,3 +15,11 @@ From the repository root, render with Manim Community Edition and a working LaTe
 ```sh
 manim -qh --fps 30 -r 1080,1920 creative_studio/scenes/math_001_heart.py MathematicalHeart
 ```
+
+## MATH-002 — The geometry of autumn
+
+An original radial maple leaf polygon with positive fan-triangle orientation, continuously drawn and filled in autumn red and orange. Portrait 1080 × 1920, 30 fps, Soph Laugh signature.
+
+```sh
+python -m manim -pqh --fps 30 -r 1080,1920 -o MATH-002.mp4 creative_studio/scenes/math_002_thanksgiving.py ThanksgivingLeaf
+```
