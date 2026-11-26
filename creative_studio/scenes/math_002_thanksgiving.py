@@ -78,7 +78,7 @@ class ThanksgivingLeaf(Scene):
                 mid = (a+b)/2
                 weight = np.clip((mid[0]+2.5)/5,0,1)
                 col = interpolate_color(ManimColor("#E23D1D"),ManimColor("#FFA32B"),weight)
-                tri = Polygon(O,a,b,stroke_width=.1,stroke_opacity=1,stroke_color=col,fill_color=col,fill_opacity=float(np.linalg.norm(b-a)>1e-9))
+                tri = Polygon(O,a,b,stroke_width=.1,stroke_opacity=float(np.linalg.norm(b-a)>1e-9),stroke_color=col,fill_color=col,fill_opacity=float(np.linalg.norm(b-a)>1e-9))
                 fill.add(tri)
             return fill
         fill = always_redraw(fan_fill)
