@@ -1,0 +1,43 @@
+name: Render MATH-001 in Manim
+on:
+  workflow_dispatch:
+  push:
+    branches: [creative/math-001-heart]
+    paths:
+      - creative_studio/scenes/math_001_heart.py
+      - .github/workflows/creative-heart.yml
+  pull_request:
+    branches: [main]
+    paths:
+      - creative_studio/scenes/math_001_heart.py
+      - .github/workflows/creative-heart.yml
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install render dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcairo2-dev libpango1.0-dev pkg-config ffmpeg texlive-latex-base texlive-latex-extra texlive-fonts-recommended dvisvgm fonts-liberation
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+      - name: Render using this repository's Manim engine
+        run: |
+          python -m manim --version
+          python -m manim -qh --fps 30 -r 1080,1920 --media_dir creative_studio/renders -o MATH-001_Heart_Soph_Laugh.mp4 creative_studio/scenes/math_001_heart.py MathematicalHeart
+          mkdir -p deliverables
+          find creative_studio/renders -name MATH-001_Heart_Soph_Laugh.mp4 -not -path '*/partial_movie_files/*' -exec cp {} deliverables/ \;
+          test -s deliverables/MATH-001_Heart_Soph_Laugh.mp4
+          ffprobe -v error -show_entries stream=width,height,r_frame_rate,codec_name:format=duration -of json deliverables/MATH-001_Heart_Soph_Laugh.mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MATH-001-Manim-master
+          path: deliverables/MATH-001_Heart_Soph_Laugh.mp4
+          if-no-files-found: error
